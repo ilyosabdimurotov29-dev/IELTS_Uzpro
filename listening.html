@@ -1,0 +1,235 @@
+
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Listening | IELTS UzPro</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header>
+        <h1>IELTS UzPro</h1>
+
+        <nav>
+            <a href="index.html">Bosh sahifa</a>
+            <a href="listening.html">Listening</a>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero">
+            <h2>IELTS Listening</h2>
+            <p>Audio tinglang va savollarga javob berib mashq qiling.</p>
+        </section>
+
+        <section class="courses">
+            <h2>Birinchi mashq</h2>
+
+            <div class="course-card">
+                <h3>Daily Activities</h3>
+                <p>Bu bo‘limda ingliz tilidagi audioni tinglashni mashq qilamiz.</p>
+                <p>Keyingi bosqichda audio fayl va test savollarini qo‘shamiz.</p>
+            </div>
+            <div class="course-card">
+    <h3>🎧 Listen to the audio</h3>
+    <p>Audioni diqqat bilan tinglang.</p>
+
+    <audio controls>
+        <source src="./AUDIO/0L21-my-day-at-college.mp3" type="audio/mpeg">
+    </audio>
+    
+<div class="course-card">
+    <h3>📝 Listening Test</h3>
+    <p>Audioni tinglang va to‘g‘ri javobni tanlang.</p>
+
+    <form id="listeningTest">
+   
+<div class="progress-info">
+    <span id="answeredCount">0 / 5 savolga javob berildi</span>
+</div>
+
+<div class="progress-bar">
+    <div id="progressFill"></div>
+</div>
+     
+<p><strong>1. What time does the person wake up?</strong></p>
+<label><input type="radio" name="q1" value="a"> 6:00 a.m.</label><br>
+<label><input type="radio" name="q1" value="b"> 7:00 a.m.</label><br>
+<label><input type="radio" name="q1" value="c"> 8:00 a.m.</label><br>
+<p id="feedback1"></p>
+<p><strong>2. What does the person do in the morning?</strong></p>
+<label><input type="radio" name="q2" value="a"> Goes shopping</label><br>
+<label><input type="radio" name="q2" value="b"> Has breakfast</label><br>
+<label><input type="radio" name="q2" value="c"> Plays football</label><br>
+<p id="feedback2"></p>
+<p><strong>3. How does the person travel?</strong></p>
+<label><input type="radio" name="q3" value="a"> By bus</label><br>
+<label><input type="radio" name="q3" value="b"> By train</label><br>
+<label><input type="radio" name="q3" value="c"> On foot</label><br>
+<p id="feedback3"></p>
+<p><strong>4. What does the person study?</strong></p>
+<label><input type="radio" name="q4" value="a"> English</label><br>
+<label><input type="radio" name="q4" value="b"> History</label><br>
+<label><input type="radio" name="q4" value="c"> Biology</label><br>
+<p id="feedback4"></p>
+<p><strong>5. What does the person do in the evening?</strong></p>
+<label><input type="radio" name="q5" value="a"> Watches TV</label><br>
+<label><input type="radio" name="q5" value="b"> Goes swimming</label><br>
+<label><input type="radio" name="q5" value="c"> Works in a shop</label><br>
+<p id="feedback5"></p>
+<br>
+<button type="button" onclick="checkListening()">
+    Check Answers
+</button>
+
+    </form>
+
+    <p id="listeningResult"></p>
+</div>
+
+<script>
+    
+    function checkListening() {
+        const answer = document.querySelector(
+            'input[name="q1"]:checked'
+        );
+
+        const result = document.getElementById("listeningResult");
+
+        if (!answer) {
+            result.textContent = "Please select an answer!";
+            return;
+        }
+
+        if (answer.value === "b") {
+            result.textContent = "Correct! 🎉";
+        } else {
+            result.textContent = "Try again! 💪";
+        }
+    }
+</script>
+
+<script>
+    
+function checkListening() {
+    const answers = {
+        q1: "b",
+        q2: "b",
+        q3: "a",
+        q4: "a",
+        q5: "a"
+    };
+
+    let score = 0;
+    let unanswered = 0;
+
+    for (let i = 1; i <= 5; i++) {
+        const selected = document.querySelector(
+            'input[name="q' + i + '"]:checked'
+        );
+
+        const feedback = document.getElementById("feedback" + i);
+
+        if (!selected) {
+            unanswered++;
+            feedback.textContent = "Javob tanlanmagan.";
+            feedback.style.color = "orange";
+        } else if (selected.value === answers["q" + i]) {
+            score++;
+            feedback.textContent = "To‘g‘ri! ✅";
+            feedback.style.color = "green";
+        } else {
+            feedback.textContent =
+                "Noto‘g‘ri. To‘g‘ri javob: " +
+                answers["q" + i].toUpperCase();
+            feedback.style.color = "red";
+        }
+    }
+
+    if (unanswered > 0) {
+        document.getElementById("listeningResult").textContent =
+            "Barcha savollarga javob bering!";
+        return;
+    }
+
+    document.getElementById("listeningResult").textContent =
+        "Natijangiz: " + score + " / 5";
+
+    localStorage.setItem("listeningScore", score);
+}
+
+function checkListening() {
+    const answers = {
+        q1: "b",
+        q2: "b",
+        q3: "a",
+        q4: "a",
+        q5: "a"
+    };
+
+    let score = 0;
+    let unanswered = 0;
+
+    for (let i = 1; i <= 5; i++) {
+        const selected = document.querySelector(
+            'input[name="q' + i + '"]:checked'
+        );
+
+        const feedback = document.getElementById("feedback" + i);
+
+        if (!selected) {
+            unanswered++;
+            feedback.textContent = "Javob tanlanmagan.";
+            feedback.style.color = "orange";
+        } else if (selected.value === answers["q" + i]) {
+            score++;
+            feedback.textContent = "To‘g‘ri! ✅";
+            feedback.style.color = "green";
+        } else {
+            feedback.textContent =
+                "Noto‘g‘ri. To‘g‘ri javob: " +
+                answers["q" + i].toUpperCase();
+            feedback.style.color = "red";
+        }
+    }
+
+    if (unanswered > 0) {
+        document.getElementById("listeningResult").textContent =
+            "Barcha savollarga javob bering!";
+        return;
+    }
+
+    document.getElementById("listeningResult").textContent =
+        "Natijangiz: " + score + " / 5";
+
+    localStorage.setItem("listeningScore", score);
+}
+
+</script>
+
+</div>
+        </section>
+    </main>
+    
+<div class="course-card">
+    <h3>📊 Your Previous Result</h3>
+    <p id="previousListeningScore">
+        Hali natija saqlanmagan.
+    </p>
+</div>
+
+<script>
+    const savedListeningScore =
+        localStorage.getItem("listeningScore");
+
+    if (savedListeningScore !== null) {
+        document.getElementById(
+            "previousListeningScore"
+        ).textContent = savedListeningScore + " / 5";
+    }
+</script>
+
+</body>
+</html>

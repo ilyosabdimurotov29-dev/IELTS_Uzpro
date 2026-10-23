@@ -1,0 +1,133 @@
+
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reading | IELTS UzPro</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header>
+        <h1>IELTS UzPro</h1>
+        <nav>
+            <a href="index.html">Bosh sahifa</a>
+            <a href="reading.html">Reading</a>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero">
+            <h2>IELTS Reading</h2>
+            <p>Matnlarni o‘qing, savollarga javob bering va natijangizni yaxshilang.</p>
+        </section>
+
+        <section class="courses">
+            <h2>Birinchi mashq</h2>
+
+            
+<div class="course-card">
+    <h3>The Importance of Reading</h3>
+
+    <p>
+        Reading helps people learn new information,
+        improve vocabulary and understand the world better.
+        It can also improve concentration.
+    </p>
+
+    <form id="readingForm">
+        <p><strong>1.</strong> What does reading help people learn?</p>
+        <label>
+            <input type="radio" name="q1" value="a">
+            New information
+        </label>
+        <br>
+        <label>
+            <input type="radio" name="q1" value="b">
+            New sports
+        </label>
+
+        <p><strong>2.</strong> What can reading improve?</p>
+        <label>
+            <input type="radio" name="q2" value="a">
+            Cooking
+        </label>
+        <br>
+        <label>
+            <input type="radio" name="q2" value="b">
+            Vocabulary
+        </label>
+
+        <p><strong>3.</strong> Reading can improve...</p>
+        <label>
+            <input type="radio" name="q3" value="a">
+            Concentration
+        </label>
+        <br>
+        <label>
+            <input type="radio" name="q3" value="b">
+            The weather
+        </label>
+
+        <br><br>
+        <button type="button" onclick="checkTest()">
+            Testni tekshirish
+        </button>
+    </form>
+
+    <p id="result"></p>
+    <p>Natija: <span id="score">0</span> / 3</p>
+</div>
+
+        </section>
+    </main>
+    
+
+
+<script>
+    function checkTest() {
+        let score = 0;
+
+        let q1 = document.querySelector('input[name="q1"]:checked');
+        let q2 = document.querySelector('input[name="q2"]:checked');
+        let q3 = document.querySelector('input[name="q3"]:checked');
+
+        if (!q1 || !q2 || !q3) {
+            document.getElementById("result").textContent =
+                "Iltimos, barcha savollarga javob bering.";
+            return;
+        }
+
+        if (q1.value === "a") score++;
+        if (q2.value === "b") score++;
+        if (q3.value === "a") score++;
+
+        document.getElementById("score").textContent = score;
+
+        document.getElementById("result").textContent =
+            "Test tugadi! Siz 3 savoldan " + score + " tasiga to‘g‘ri javob berdingiz.";
+            
+localStorage.setItem("readingScore", score);
+
+    }
+</script>
+
+
+<div class="course-card">
+    <h3>Oldingi natijangiz</h3>
+    <p id="previousScore">Hali natija saqlanmagan.</p>
+</div>
+
+<script>
+    let savedScore = localStorage.getItem("readingScore");
+
+    if (savedScore !== null) {
+        document.getElementById("previousScore").textContent =
+            savedScore + " / 3";
+    }
+</script>
+
+
+</body>
+</html>
